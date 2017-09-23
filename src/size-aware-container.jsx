@@ -43,8 +43,7 @@ export function sizeAwareContainer(componentClass, sizes) {
     }
 
     render() {
-      const props = Object.assign({}, this.props, { ref: el => this.el = el })
-      const component = React.createElement(componentClass, props, this.props.children);
+      const component = React.createElement(componentClass, this.props, this.props.children);
 
       return (
         <div className={this.state.size}>{component}</div>

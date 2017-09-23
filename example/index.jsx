@@ -11,10 +11,18 @@ class Message extends React.Component {
     return (
       <div>
         <Container width="100%" height="500px">
-          <ProfileCard />
+          <ProfileCard
+            name="Neil Peart"
+            initials="NP"
+            location="Toronto, Canada"
+          />
         </Container>
         <Container width="400px" height="100px">
-          <ProfileCard />
+          <ProfileCard
+            name="Geddy Lee"
+            initials="GL"
+            location="Toronto, Canada"
+          />
         </Container>
       </div>
     );

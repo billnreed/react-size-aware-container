@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 import { GameCollection } from './game-collection.jsx';
 
+import './index.scss';
+
 class Example extends React.Component {
   render() {
     const games = [
@@ -57,9 +59,21 @@ class Example extends React.Component {
     ];
 
     return (
-      <GameCollection 
-        games={games}
-      />
+      <div className="page">
+        <h1 className="page-title">Check out my game collections!</h1>
+        <section className="main-collection">
+          <h2>Main Collection</h2>
+          <GameCollection 
+            games={games.slice(0, 4)}
+          />
+        </section>
+        <section className="side-collection">
+          <h2>Side Collection</h2>
+          <GameCollection
+            games={games.slice(4)}
+          />
+        </section>
+      </div>
     );
   }
 }

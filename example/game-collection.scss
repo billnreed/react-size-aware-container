@@ -1,12 +1,9 @@
 .game-collection {
   display: grid;
   grid-gap: 10px;
+  grid-template-columns: 1fr;
 
-  &.is-grid {
+  .grid & {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  &.is-list {
-    grid-template-columns: 1fr;
   }
 }

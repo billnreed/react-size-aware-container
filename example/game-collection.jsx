@@ -1,13 +1,14 @@
 import React from 'react';
 
 import { GameCollectionItem } from './game-collection-item.jsx';
+import { sizeAwareContainer } from '../src/size-aware-container.jsx';
 
 import './game-collection.scss';
 
-export class GameCollection extends React.Component {
+class __GameCollection extends React.Component {
   render() {
     return (
-      <div className={`game-collection ${this.props.isGrid ? 'is-grid' : 'is-list'}`}>
+      <div className="game-collection">
         {this.props.games.map((game, index) => {
           return <GameCollectionItem {...game} key={`game-${index}`} />
         })}
@@ -16,17 +17,21 @@ export class GameCollection extends React.Component {
   }
 }
 
-GameCollection.propTypes = {
+__GameCollection.propTypes = {
   games: React.PropTypes.arrayOf(React.PropTypes.shape({
     title: React.PropTypes.string,
     platform: React.PropTypes.string,
     releaseYear: React.PropTypes.string,
     coverUrl: React.PropTypes.string,
   })),
-  isGrid: React.PropTypes.bool,
 };
 
-GameCollection.defaultProps = {
+__GameCollection.defaultProps = {
   games: [],
-  isGrid: true,
 }
+
+export const GameCollection = sizeAwareContainer(__GameCollection, {
+  grid: {
+    minWidth: 700,
+  },
+});

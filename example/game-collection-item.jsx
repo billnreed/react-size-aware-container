@@ -7,9 +7,11 @@ export class GameCollectionItem extends React.Component {
     return (
       <div className="game-collection-item">
         <h2 className="game-collection-item-title">{this.props.title}</h2>
-        <div className="game-collection-item-cover"><img className="game-collection-item-cover-image" src={this.props.coverUrl} /></div>
-        <div className="game-collection-item-platform">{this.props.platform}</div>
-        <div className="game-collection-item-release-year">{this.props.releaseYear}</div>
+        <div className="game-collection-item-body">
+          <div className="game-collection-item-cover"><img className="game-collection-item-cover-image" src={this.props.coverUrl} /></div>
+          <div className="game-collection-item-platform">{this.props.platform}</div>
+          <div className="game-collection-item-release-year">{this.props.releaseYear}</div>
+        </div>
       </div>
     );
   }

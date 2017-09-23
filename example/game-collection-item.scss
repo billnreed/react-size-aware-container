@@ -1,6 +1,11 @@
 .game-collection-item {
+  &::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+
   font-size: 16px;
-  text-align: center;
   box-shadow: #ccc 0px 2px 2px;
   border-top: 1px solid #eee;
   padding: 10px;
@@ -10,18 +15,20 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    word-spacing: 0.1em;
     margin-bottom: 10px;
   }
 
   &-cover {
-    width: 200px;
-    height: 280px;
-    margin: 0 auto 10px;
+    width: 100px;
+    height: 140px;
+    margin: 0 10px 10px 0;
     overflow: hidden;
+    float: left;
 
     &-image {
-      width: 200px;
-      heigt: auto;
+      width: 100px;
+      height: auto;
     }
   }
 
@@ -31,5 +38,21 @@
 
   &-release-year {
 
+  }
+
+  .grid & {
+    text-align: center;
+
+    &-cover {
+      width: 200px;
+      height: 280px;
+      float: none;
+      margin: 0 auto 10px;
+
+      &-image {
+        width: 200px;
+        height: auto;
+      }
+    }
   }
 }

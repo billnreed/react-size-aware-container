@@ -4,22 +4,6 @@ import ReactDOM from 'react-dom';
 import { GameCollection } from './game-collection.jsx';
 
 class Example extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isGrid: true,
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({
-      isGrid: event.target.checked,
-    });
-  }
-
   render() {
     const games = [
       {
@@ -73,16 +57,9 @@ class Example extends React.Component {
     ];
 
     return (
-      <div>
-        <label>
-          Show as grid?
-          <input type="checkbox" checked={this.state.isGrid} onChange={this.handleChange} />
-        </label>
-        <GameCollection 
-          games={games}
-          isGrid={this.state.isGrid}
-        />
-      </div>
+      <GameCollection 
+        games={games}
+      />
     );
   }
 }

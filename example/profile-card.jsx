@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { sizeAware } from './size-aware.jsx';
+import { sizeAware } from '../src/size-aware.jsx';
 
 import './profile-card.scss';
 

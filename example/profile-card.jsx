@@ -22,5 +22,7 @@ class __ProfileCard extends React.Component {
 }
 
 export const ProfileCard = sizeAwareContainer(__ProfileCard, {
-  small: 500,
+  small: {
+    maxWidth: 500,
+  },
 });

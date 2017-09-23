@@ -25,24 +25,22 @@ export function sizeAwareContainer(componentClass, sizes) {
     checkAndApplySizes() {
       const elWidth = this.domNode.clientWidth;
 
-      let foundSize = '';
-      Object.keys(sizes).forEach(size => {
+      const foundSize = Object.keys(sizes).reduce((alreadyFoundSize, size) => {
+        if (alreadyFoundSize.length) { return alreadyFoundSize; }
+
         const condition = sizes[size];
-        const maxWidth = condition.maxWidth || condition['max-width'];
-        const minWidth = condition.minWidth || condition['min-width'];
+        const maxWidth = condition.maxWidth || condition['max-width'] || null;
+        const minWidth = condition.minWidth || condition['min-width'] || null;
 
-        if (maxWidth) {
-          if (elWidth <= maxWidth) {
-            foundSize = size;
-          }
+        if (maxWidth && elWidth <= maxWidth) {
+          return size;
         }
-        if (minWidth) {
-          if (elWidth >= minWidth) {
-            foundSize = size;
-          }
+        if (minWidth && elWidth >= minWidth) {
+          return size;
         }
 
-      });
+        return '';
+      }, '');
 
       this.setState({
         size: foundSize,

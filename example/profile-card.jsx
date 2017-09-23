@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { sizeAware } from '../src/size-aware.jsx';
+import { sizeAwareContainer } from '../src/size-aware-container.jsx';
 
 import './profile-card.scss';
 
@@ -21,6 +21,6 @@ class __ProfileCard extends React.Component {
   }
 }
 
-export const ProfileCard = sizeAware(__ProfileCard, {
+export const ProfileCard = sizeAwareContainer(__ProfileCard, {
   small: 500,
 });

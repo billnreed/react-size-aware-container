@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 
-export function sizeAware(componentClass, sizes) {
+export function sizeAwareContainer(componentClass, sizes) {
   return class extends React.Component {
     constructor(props) {
       super(props);

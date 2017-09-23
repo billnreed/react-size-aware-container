@@ -1,0 +1,35 @@
+.game-collection-item {
+  font-size: 16px;
+  text-align: center;
+  box-shadow: #ccc 0px 2px 2px;
+  border-top: 1px solid #eee;
+  padding: 10px;
+
+  &-title {
+    font-size: 1em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+
+  &-cover {
+    width: 200px;
+    height: 280px;
+    margin: 0 auto 10px;
+    overflow: hidden;
+
+    &-image {
+      width: 200px;
+      heigt: auto;
+    }
+  }
+
+  &-platform {
+
+  }
+
+  &-release-year {
+
+  }
+}

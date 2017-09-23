@@ -1,0 +1,12 @@
+.game-collection {
+  display: grid;
+  grid-gap: 10px;
+
+  &.is-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &.is-list {
+    grid-template-columns: 1fr;
+  }
+}

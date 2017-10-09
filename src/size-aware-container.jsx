@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 
-export function sizeAwareContainer(componentClass, sizes) {
+export function sizeAwareContainer(componentClass, containerQueries) {
   return class extends React.Component {
     constructor(props) {
       super(props);
@@ -10,40 +10,38 @@ export function sizeAwareContainer(componentClass, sizes) {
         size: '',
       };
 
-      this.checkAndApplySizes = this.checkAndApplySizes.bind(this);
+      this.checkAndApplySizes = this.checkAndApplyQueries.bind(this);
     }
 
     componentDidMount() {
       this.domNode = ReactDOM.findDOMNode(this);
 
-      this.checkAndApplySizes();
+      this.checkAndApplyQueries();
       window.addEventListener('resize', resizeEvent => {
-        this.checkAndApplySizes();
+        this.checkAndApplyQueries();
       });
     }
 
-    checkAndApplySizes() {
+    checkAndApplyQueries() {
       const elWidth = this.domNode.clientWidth;
 
-      const foundSize = Object.keys(sizes).reduce((alreadyFoundSize, size) => {
-        if (alreadyFoundSize.length) { return alreadyFoundSize; }
-
-        const condition = sizes[size];
+      const applicableQueries = Object.keys(containerQueries).reduce((foundQueries, query) => {
+        const condition = containerQueries[query];
         const maxWidth = condition.maxWidth || condition['max-width'] || null;
         const minWidth = condition.minWidth || condition['min-width'] || null;
 
         if (maxWidth && elWidth <= maxWidth) {
-          return size;
+          return foundQueries.concat([query]);
         }
         if (minWidth && elWidth >= minWidth) {
-          return size;
+          return foundQueries.concat([query]);
         }
 
-        return '';
+        return foundQueries
       }, '');
 
       this.setState({
-        size: foundSize,
+        size: applicableQueries,
       });
     }
 

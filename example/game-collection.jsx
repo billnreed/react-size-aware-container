@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { GameCollectionItem } from './game-collection-item.jsx';
-import { sizeAwareContainer } from '../src/size-aware-container.jsx';
+import { sizeAwareContainer } from '../src/sizeAwareContainer.js';
 
 import './game-collection.scss';
 

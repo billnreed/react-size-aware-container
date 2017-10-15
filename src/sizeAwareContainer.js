@@ -1,5 +1,5 @@
 import React from 'react';
-import { SizeAwareContainer } from './size-aware-container.jsx';
+import { SizeAwareContainer } from './SizeAwareContainer.jsx';
 
 export function sizeAwareContainer(componentClass, containerQueries) {
   return class extends SizeAwareContainer {

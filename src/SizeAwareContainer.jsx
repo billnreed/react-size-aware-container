@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
+import { QueryMatcher } from './QueryMatcher.js';
 
 export class SizeAwareContainer extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ export class SizeAwareContainer extends React.Component {
 
   componentDidMount() {
     this.domNode = ReactDOM.findDOMNode(this);
+    this.queryMatcher = new QueryMatcher(this.state.containerQueries);
 
     this.checkAndApplyQueries();
     window.addEventListener('resize', resizeEvent => {
@@ -24,6 +26,7 @@ export class SizeAwareContainer extends React.Component {
   checkAndApplyQueries() {
     const elWidth = this.domNode.clientWidth;
 
+    /*
     const applicableQueries = Object.keys(this.state.containerQueries).reduce((foundQueries, query) => {
       const condition = this.state.containerQueries[query];
       const maxWidth = condition.maxWidth || condition['max-width'] || null;
@@ -38,6 +41,9 @@ export class SizeAwareContainer extends React.Component {
 
       return foundQueries
     }, []);
+    */
+    const applicableQueries = this.queryMatcher.match(elWidth);
+
 
     this.setState({
       classes: applicableQueries,
